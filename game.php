@@ -1,46 +1,52 @@
 <?php
 
-class Humain
+class Perso
 {
-    private $_nom;
-    private $_vie;
-    private $_force;
-    private $_degats;
+    private $_nomPerso;
+    private $_viePerso;
+    private $_degatsPerso;
 
 
     //  Init de la class
 
-    public function __construct($nom)
+    public function __construct($nomPerso, $viePerso, $degatsPerso)
     {
         echo 'Le construct a bien été crée ! <br>';
-        $this->_nom = $nom;
-        $this->_vie = 100;
-        $this->_force = 10;
-        $this->_degats = 0;
+        $this->_nomPerso = $nomPerso;
+        $this->_viePerso = $viePerso;
+        $this->_degatsPerso = $degatsPerso;
     }
 
     public function getNom()
     {
-        return $this->_nom;
+        return $this->_nomPerso;
     }
 
     public function getVie()
     {
-        return $this->_vie;
-    }
-
-    public function getForce()
-    {
-        return $this->_force;
+        return $this->_viePerso;
     }
 
     public function getDegat()
     {
-        return $this->_degat;
+        return $this->_degatsPerso;
     }
 
-    public function parler()
+    public function setLife($x)
     {
-        echo 'test <br>';
+        $this->_viePerso = $x;
+    }
+
+    public function frapperAdversaire($adversaire)
+    {
+        $lifeEnnemis = $adversaire->getVie();
+        $lifeEnnemis = $lifeEnnemis - $this->_degatsPerso;
+        $adversaire->setLife($lifeEnnemis);
+        echo $this->_nomPerso . " a attaqué " . $adversaire->getNom();
+    }
+
+    public function afficher()
+    {
+        echo $this->nomPerso . " a encore " . $this->_viePerso . "point de vie <br>";
     }
 }
