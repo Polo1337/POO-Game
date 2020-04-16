@@ -9,12 +9,11 @@ class Perso
 
     //  Init de la class
 
-    public function __construct($nomPerso, $viePerso, $degatsPerso)
+    public function __construct($nomPerso)
     {
-        echo 'Le construct a bien été crée ! <br>';
         $this->_nomPerso = $nomPerso;
-        $this->_viePerso = $viePerso;
-        $this->_degatsPerso = $degatsPerso;
+        $this->_viePerso = rand(90, 100);
+        $this->_degatsPerso = rand(5, 10);
     }
 
     public function getNom()
@@ -37,6 +36,15 @@ class Perso
         $this->_viePerso = $x;
     }
 
+    public function affiche()
+    {
+        echo ("<center>======================================<br>");
+        echo ("Personnage Crée du nom de : " . $this->_nomPerso . " <br><br> Ses Caractéristiques sont : <br>");
+        echo ("- Nombre de Point D'attaque : " . $this->_degatsPerso . "<br>");
+        echo ("- Nombre de Point de Vie : " . $this->_viePerso . "<br>");
+        echo ("======================================<br></center>");
+    }
+
     public function frapperAdversaire($adversaire)
     {
         $lifeEnnemis = $adversaire->getVie();
@@ -47,6 +55,6 @@ class Perso
 
     public function afficher()
     {
-        echo $this->nomPerso . " a encore " . $this->_viePerso . "point de vie <br>";
+        echo $this->_nomPerso . " a encore " . $this->_viePerso . "point de vie <br>";
     }
 }
